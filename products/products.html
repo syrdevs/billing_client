@@ -1,0 +1,96 @@
+<div class="navline">
+    <div class="navline-item active">
+        <a href="#/products/guid=1-353536">Продукты</a></div>
+    <div class="navline-item " >
+        <a href="#/cabinet">Мои подписки</a></div>
+</div>
+<div class="container-products ">
+    <div class="prod-container" ng-repeat="product in products">
+        <div class="prod-item-container">
+
+            <table>
+                <tr>
+                    <td>
+                        <div class="prod-image">
+                            <img ng-src="{{product.image}}">
+                        </div>
+                        <div class="clear_fix"></div>
+                    </td>
+                    <td>
+                        <div class="prod-content">
+                            <div class="prod-title">
+                                {{product.title}}
+                            </div>
+                            <div class="prod-short-description">
+                               {{product.shorttext}}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="prod-buttons-container">
+                            <div class="prod-cost">{{product.cost}} 000<div>тг/месяц</div></div>
+                            <div ng-click="onPurchase(product,$index)" class="prod-purchase">Подключить</div>
+                            <div ng-click="onDetailShow(product,$index)" class="prod-detail">Подробно...</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div ng-class="{div: true,active: selected == $index}" class="prod-description-container">
+                {{product.longtext}}
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- <div class="product-panel">
+         <div class="products-info">
+
+
+
+
+         <!--<div class="product-item" ng-repeat="product in products">
+                 <div class="product-container">
+                     <div class="product-title">
+                         {{product.title}}
+                     </div>
+                     <div class="product-picture">
+                         <img ng-src={{product.image}}/>
+                     </div>
+                     <div class="product-short-description">
+                        {{product.shorttext}}
+                     </div>
+                     <div class="product-cost">
+                         <div>
+                             <div class="product_buy_btn btn" ng-click="onPurchase(product,$index)">Подключить <span ng-show="getisfree">{{product.cost}} <sup>тг/месяц</sup></span> </div>
+                         </div>
+                     </div>
+
+                     <div class="product-footer">
+                         <div class="product-detail-btn" ng-click="onDetailShow(product,$index)"> Подробно</div>
+                     </div>
+
+                     <div class="arrow-container" ng-class="{div: true,active: selected == $index }">
+                         <div class="arrow-up"></div>
+                     </div>
+                 </div>
+                 <div ng-class="{div: true,active: selected == $index}"  class="product-more-description-container">
+                     <div class="tools-container">
+                         <div class="title-container">
+                             Подробный описание продукта
+                         </div>
+                         <div class="buttons-container" ng-click="selected=-1">
+                             Закрыть
+                         </div>
+                     </div>
+                     <div class="description-body">
+                     {{product.longtext}}
+                     </div>
+                 </div>
+             </div>
+
+
+        </div>
+    </div>-->
+</div>

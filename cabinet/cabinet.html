@@ -1,0 +1,27 @@
+<div class="navline">
+    <div class="navline-item ">
+        <a href="#/products/guid=1-353536">Продукты</a></div>
+    <div class="navline-item active" >
+        <a href="#/cabinet">Мои подписки</a></div>
+</div>
+<div class="container-fluid">
+    <div class="panel">
+        <div class="panel-body">
+
+            <div ng-show="!myProducts.length" class="text-center"><h4>Не найдено активных подписок</h4></div>
+
+            <table class="table table-paper table-services-package">
+                <tr ng-repeat="product in myProducts">
+                    <td><span class="text-gray-light">Продукт</span><br> <a href="#"
+                                                                                  class="link-underline fz-16 font-weight-bold">
+                       {{product.title}} ({{product.cost}} тг/мес)</a></td>
+                    <td><span class="text-gray-light">Статус</span><br> <span class="fz-16 text-success">
+                Включена, следующее списание 01.11.2018
+                    </span></td>
+                    <td></td>
+                    <td colspan="2" class="text-right align-middle"><div><span ng-click="cancelSubscribe(product)" class="btn btn-outline-blue btn-with-icon btn-sm">Отменить</span></div></td>
+                    <td colspan="2"></td>
+                </tr> <!----> <!----></table>
+        </div>
+    </div>
+</div>
