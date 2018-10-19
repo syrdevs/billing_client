@@ -1,29 +1,30 @@
+<iframe id="download_frame" style="display:none;"></iframe>
 <div class="container-fluid">
     <div class="product-purchase-container">
-        <h5><a href="#/cabinet">Назад к мои подписки</a></h5>
+        <h5><a ng-click="toMyCabinet(this)">Назад к мои подписки</a></h5>
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-md-4">
                     <div class="picture-container">
-                        <img src="https://ozon-st.cdn.ngenix.net/multimedia/1014694094.jpg"/>
+                        <img ng-src="{{productData.image}}"/>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="panel">
-                        <div class="panel-heading"><h3><b>"Kaspersky Anti-Virus (лицензия на 1 ПК)"</b></h3>
+                        <div class="panel-heading"><h3><b>"{{productData.detail}}"</b></h3>
                         </div>
                         <div class="panel-body">
-                            <p>Вы подключили "Kaspersky Anti-Virus" (лицензия на 1 ПК).<br> Стоимость подписки 750 тенге в
-                                месяц.<br> Последнее проведенное списание с Вашего счета: 750 тенге</p>
+                            <p>Вы подключили "{{productData.detail}}.<br> Стоимость подписки {{productData.cost}} тенге в
+                                месяц.<br>
                             <p>
                                 При установке используйте следующие активационные данные:
                             </p>
                             <p>
-                                <b>Код активации: 5MQJ9-58B2J-34WJV-E8BJF</b>
+                                <b>Код активации: {{distrData.keyList[0].value}}</b>
                             </p>
                             <h4>1. Скачайте и запустите программу установки<br></h4>
                             <p>
-                                <button type="button" class="btn btn-success">Скачать</button>
+                                <button type="button" ng-click="downloadFile()" class="btn btn-success">Скачать</button>
                             </p>
 
                             <h4>2.Следуйте инструкциям по установке программы</h4>

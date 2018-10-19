@@ -11,6 +11,10 @@ angular.module('myApp.products', ['ngRoute'])
             $scope.guid = $routeParams.uuid;
             $rootScope.userGuid = $routeParams.uuid;
 
+            $scope.toProducts = function(){
+                $location.path("products/guid=" + $rootScope.userGuid);
+            };
+
             $http.get('auth/getproducts?guid=' + $scope.guid)
                 .then(function (res) {
                     $scope.products = res.data;

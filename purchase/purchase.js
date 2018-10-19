@@ -8,6 +8,12 @@ angular.module('myApp.purchase', ['ngRoute'])
     .controller('PurchaseCtrl', ['$scope', '$rootScope', '$http', '$location', '$routeParams', '$timeout',
         function ($scope, $rootScope, $http, $location, $routeParams, $timeout) {
 
+        $scope.productData = {};
+
+            $scope.toProducts = function(){
+                $location.path("products/guid=" + $rootScope.userGuid);
+            };
+
             function loaderToggle(state) {
                 var x = document.getElementById("cube-loader");
 
@@ -17,6 +23,11 @@ angular.module('myApp.purchase', ['ngRoute'])
                 }
                 x.style.display = "flex";
             }
+
+            $http.get('auth/getoneproduct?guid=' + $rootScope.userGuid + "&product=" + $routeParams.code)
+                .then(function (res) {
+                    $scope.productData = res.data;
+                });
 
             $scope.onPurchase = function () {
 

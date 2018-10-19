@@ -1,6 +1,6 @@
 <div class="navline">
     <div class="navline-item active">
-        <a href="#/products/guid=1-353536">Продукты</a></div>
+        <a  ng-click="toProducts()" onclick="return false;">Продукты</a></div>
     <div class="navline-item " >
         <a href="#/cabinet">Мои подписки</a></div>
 </div>
@@ -28,7 +28,11 @@
                     </td>
                     <td>
                         <div class="prod-buttons-container">
-                            <div class="prod-cost">{{product.cost}} 000<div>тг/месяц</div></div>
+
+
+                            <div ng-hide="product.isfree" class="prod-cost">{{product.cost}}<div>тг/месяц</div></div>
+                            <div ng-hide="!product.isfree" class="prod-cost">Бесплатно<div></div></div>
+
                             <div ng-click="onPurchase(product,$index)" class="prod-purchase">Подключить</div>
                             <div ng-click="onDetailShow(product,$index)" class="prod-detail">Подробно...</div>
                         </div>

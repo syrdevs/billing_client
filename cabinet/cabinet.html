@@ -1,6 +1,6 @@
 <div class="navline">
     <div class="navline-item ">
-        <a href="#/products/guid=1-353536">Продукты</a></div>
+        <a ng-click="toCabinet()" onclick="return false;">Продукты</a></div>
     <div class="navline-item active" >
         <a href="#/cabinet">Мои подписки</a></div>
 </div>
@@ -12,7 +12,7 @@
 
             <table class="table table-paper table-services-package">
                 <tr ng-repeat="product in myProducts">
-                    <td><span class="text-gray-light">Продукт</span><br> <a href="#"
+                    <td><span class="text-gray-light">Продукт</span><br> <a onclick="return false;" ng-click="getDistrubutor(product,this)"
                                                                                   class="link-underline fz-16 font-weight-bold">
                        {{product.title}} ({{product.cost}} тг/мес)</a></td>
                     <td><span class="text-gray-light">Статус</span><br> <span class="fz-16 text-success">
