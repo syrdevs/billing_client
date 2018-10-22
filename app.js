@@ -16,10 +16,7 @@ angular.module('myApp', [
     .controller('NavigationCtrl', ['$scope', '$rootScope', '$http', '$location', 'AuthService',
         function ($scope, $rootScope, $http, $location, authService) {
 
-            $("#myModal").on("click",".btn-primary", function()
-            {
-                $location.path("products/guid=" + $rootScope.userGuid);
-            });
+            $scope.toProducts = function(){ $location.path("products/guid=" + $rootScope.userGuid); };
 
             $rootScope.showModalBoot = function (errCode) {
 
