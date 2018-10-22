@@ -31,20 +31,25 @@ angular.module('myApp.purchase', ['ngRoute'])
 
             $scope.onPurchase = function () {
 
-                loaderToggle();
-                // to do handler error
-                $http.get('auth/setcredit?guid=' + $rootScope.userGuid + '&product_code=' + $routeParams.code)
-                    .then(function (res) {
-                        loaderToggle(true);
+                $check = $("#confirm-purchase-agree").prop('checked');
 
-                        if (res.data.errcode == "100") {
-                            $location.path("distributor/" + $routeParams.code);
-                        } else {
-                            $rootScope.showModalBoot(res.data.errcode);
-                        }
-                    });
+                if ($check) {
+                    loaderToggle();
+                    // to do handler error
+                    $http.get('auth/setcredit?guid=' + $rootScope.userGuid + '&product_code=' + $routeParams.code)
+                        .then(function (res) {
+                            loaderToggle(true);
 
-
+                            if (res.data.errcode == "100") {
+                                $location.path("distributor/" + $routeParams.code);
+                            } else {
+                                $rootScope.showModalBoot(res.data.errcode);
+                            }
+                        });
+                    $("#confirm-purchase-agree-message").hide();
+                } else {
+                    $("#confirm-purchase-agree-message").show();
+                }
             };
 
         }]);

@@ -18,16 +18,18 @@
                             1. Проверьте условия подключения<br>
                             Вы подключаете {{productData.detail}}<br>
                             <br>
-                            Стоимость подписки составит <b>{{productData.cost}} тенге </b><br>
-
+                            <div ng-if="productData.isfree">
+                                Стоимость подписки составит <b>{{productData.cost}} тенге </b><br>
+                            </div>
                             После подключения подписки Вы получите доступ к
                             установочному файлу, и подписка станет активной.
                             <br>
                             <p>
                                 <label>
-                                    <input type="checkbox" value="">
-                                    Я принимаю условия
+                                    <input type="checkbox" id="confirm-purchase-agree" value="">
+                                     Я принимаю условия
                                 </label>
+                                <label><span id="confirm-purchase-agree-message" style="color:red;display: none;">Необходимо принять пользовательское соглашение</span></label>
                             </p>
 
                             <br>
