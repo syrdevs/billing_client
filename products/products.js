@@ -15,6 +15,8 @@ angular.module('myApp.products', ['ngRoute'])
                 $location.path("products/guid=" + $rootScope.userGuid);
             };
 
+            $rootScope.showModalBoot("101");
+
             $http.get('auth/getproducts?guid=' + $scope.guid)
                 .then(function (res) {
                     $scope.products = res.data;
@@ -28,6 +30,9 @@ angular.module('myApp.products', ['ngRoute'])
             $scope.onPurchase = function (product, index) {
                 $location.path("purchase/" + product.telecomName);
             };
+
+
+
 
             $scope.getisfree = function (guid, product) {
                 $http.get('auth/isfree?guid=' + guid + "&product=" + product)

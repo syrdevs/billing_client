@@ -8,9 +8,9 @@ angular.module('myApp.purchase', ['ngRoute'])
     .controller('PurchaseCtrl', ['$scope', '$rootScope', '$http', '$location', '$routeParams', '$timeout',
         function ($scope, $rootScope, $http, $location, $routeParams, $timeout) {
 
-        $scope.productData = {};
+            $scope.productData = {};
 
-            $scope.toProducts = function(){
+            $scope.toProducts = function () {
                 $location.path("products/guid=" + $rootScope.userGuid);
             };
 
@@ -32,12 +32,16 @@ angular.module('myApp.purchase', ['ngRoute'])
             $scope.onPurchase = function () {
 
                 loaderToggle();
-
                 // to do handler error
-                $http.get('auth/setcredit?guid='+$rootScope.userGuid+'&product_code=' +$routeParams.code)
+                $http.get('auth/setcredit?guid=' + $rootScope.userGuid + '&product_code=' + $routeParams.code)
                     .then(function (res) {
                         loaderToggle(true);
-                        $location.path("distributor/"+$routeParams.code);
+
+                        if (res.data.errcode == "100") {
+                            $location.path("distributor/" + $routeParams.code);
+                        } else {
+                            $rootScope.showModalBoot(res.data.errcode);
+                        }
                     });
 
 
