@@ -15,7 +15,6 @@ angular.module('myApp.products', ['ngRoute'])
                 $location.path("products/guid=" + $rootScope.userGuid);
             };
 
-            $rootScope.showModalBoot("101");
 
             $http.get('auth/getproducts?guid=' + $scope.guid)
                 .then(function (res) {
