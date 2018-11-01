@@ -12,7 +12,6 @@ angular.module('myApp.cabinet', ['ngRoute'])
 
 
             $scope.toCabinet = function () {
-                console.log("products/guid=" + $rootScope.userGuid + $rootScope.encodeByObj($rootScope.serviceParams, "/"));
                 $location.path("products/guid=" + $rootScope.userGuid + $rootScope.encodeByObj($rootScope.serviceParams, "/"));
             };
 
