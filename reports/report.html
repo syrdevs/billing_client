@@ -3,7 +3,7 @@
 
     <div class="panel">
         <div class="panel-body">
-            <h4>Всего: 4 520</h4>
+            <h4>Всего: {{sumItems}}</h4>
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -13,10 +13,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>5.10.2018</td>
-                    <td>150</td>
+                <tr ng-repeat="report in reportData">
+                    <td>{{$index+1}}</td>
+                    <td>{{report.parsedate}}</td>
+                    <td>{{report.count}}</td>
                 </tr>
                 </tbody>
             </table>
