@@ -8,29 +8,50 @@ angular.module('myApp', [
     'myApp.products',
     'myApp.cabinet',
     'myApp.purchase',
-    'myApp.distributor'
+    'myApp.distributor',
+    'myApp.report',
+    'myApp.errors'
 ]).config(['$locationProvider', '$routeProvider', "$httpProvider", function ($locationProvider, $routeProvider, $httpProvider) {
-    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-    $routeProvider.otherwise({redirectTo: '/'});
-}])
-    .controller('NavigationCtrl', ['$scope', '$rootScope', '$http', '$location', 'AuthService',
-        function ($scope, $rootScope, $http, $location, authService) {
 
-            $scope.toProducts = function(){ $location.path("products/guid=" + $rootScope.userGuid); };
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+    $routeProvider.otherwise({redirectTo: 'error/404'});
+}])
+    .controller('NavigationCtrl', ['$scope', '$rootScope', '$http', '$location', 'AuthService', '$routeParams',
+        function ($scope, $rootScope, $http, $location, authService, $routeParams) {
+
+            /*if (typeof $rootScope.userGuid == 'undefined' && !$routeParams.guid) {
+                $location.path('error/404');
+            }
+*/
+            $scope.toProducts = function () {
+                $location.path("products/guid=" + $rootScope.userGuid + $rootScope.encodeByObj($rootScope.serviceParams, "/"));
+            };
+
+            $rootScope.encodeByObj = function (param, quota) {
+                var str = "";
+                for (var key in param) {
+                    if (str != "") {
+                        str += quota ? quota : "&";
+                    }
+                    str += key + "=" + encodeURIComponent(param[key]);
+                }
+
+                return (quota ? quota : "&") + str;
+            }
 
             $rootScope.showModalBoot = function (errCode) {
 
-                if(!errCode) return;
+                if (!errCode) return;
 
                 var errors = {
-                    "101":"Сервис Касперского не доступна",
-                    "102":"Сервис Телеком не доступен",
-                    "103":"Указанного продукта не существует!",
-                    "100":"Успешно",
-                    "105":"Имеется подписка на услугу!"
+                    "101": "Сервис Касперского не доступна",
+                    "102": "Сервис Телеком не доступен",
+                    "103": "Указанного продукта не существует!",
+                    "100": "Успешно",
+                    "105": "Имеется подписка на услугу!"
                 };
 
-                $('#myModal .modal-body').html("<p>"+errors[errCode]+"</p>");
+                $('#myModal .modal-body').html("<p>" + errors[errCode] + "</p>");
                 $('#myModal').modal('toggle');
             };
 

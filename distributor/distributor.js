@@ -19,7 +19,7 @@ angular.module('myApp.distributor', ['ngRoute'])
                 document.getElementById('download_frame').src = $scope.distrData.distrList[0].value;
             };
 
-            $http.get('auth/gettransaction?guid=' + $rootScope.userGuid + "&product=" + $routeParams.code)
+            $http.get('auth/gettransaction?guid=' + $rootScope.userGuid + "&product=" + $routeParams.code+ $rootScope.encodeByObj($rootScope.serviceParams))
                 .then(function (res) {
                     $scope.distrData = JSON.parse(res.data.distrjson);
                     $scope.productData = res.data.product;

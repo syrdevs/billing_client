@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="product-purchase-container">
 
-        <h5><a  ng-click="toProducts()" onclick="return false;" href="#">Назад к продукты</a></h5>
+        <h5><a ng-click="toProducts()" onclick="return false;" href="#">Назад к продукты</a></h5>
 
         <div class="panel panel-default">
             <div class="row">
@@ -24,10 +24,16 @@
                             После подключения подписки Вы получите доступ к
                             установочному файлу, и подписка станет активной.
                             <br>
+                            <br>
+                            2.Укажите допольнительную информацию
+                            <br>
+                            <label for="email">Введите ваш email:</label>
+                            <input id="email" type="email" ng-model="clientEmail" name="email"/>
+                            <label><span id="email-error-message" style="color:red;display: none;"></span></label>
                             <p>
                                 <label>
                                     <input type="checkbox" id="confirm-purchase-agree" value="">
-                                     Я принимаю условия
+                                    Я принимаю условия
                                 </label>
                                 <label><span id="confirm-purchase-agree-message" style="color:red;display: none;">Необходимо принять пользовательское соглашение</span></label>
                             </p>
